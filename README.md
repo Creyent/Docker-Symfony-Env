@@ -12,10 +12,12 @@ Docker-compose file for dockerized Symfony development environment.
 - DB-Data Volume (MySQL data persist)
 - PHP 7
 - Apache2
+- Composer
+- Timezone according to `.env` file
 - MySQL
-- PHPMyAdmin (for database administration, yu can easily remove it)
+- PHPMyAdmin
 
-Build on a docker-compose.yml file.
+Built on a docker-compose.yml file.
 
 Note: This environment configuration was made on Windows 10, on Linux the shared folders are not setted before because it works out of the box.
 The usual IP used for docker is (192.168.99.100), if differs please replace for your setup.
@@ -26,20 +28,42 @@ The usual IP used for docker is (192.168.99.100), if differs please replace for 
 - VirtualBox (usually installed with docker)
 - GIT (just for clone this repo)
 
-## Installation/Use
+## Installation
 
+- Go into any terminal and clone or fork the project.
+- Browse into cloned folder:
+    ```bash
+    $ cd Docker-Symfony-Env
+    ```
 - Create a `.env` from the `.env.dist` file. Configure it according to your needs.
-
     ```bash
         cp .env.dist .env
     ```
+- Build the required images typing in the docker terminal:
+    ```bash
+    $ docker-compose build
+    ```
 
-- Go into any terminal and clone or fork the project.
-- Browse into cloned folder: 'cd Docker-Symfony-Env'
-- Type in the docker terminal: 'docker-compose build' to build the required images.
-- Type in the docker terminal: 'docker-compose up -d' to create and run the containers.
+## Use
 
-Now open your browser and go to: <http://192.168.99.100/phpinfo.php> it should show you the PHP 7 info page.
+- Browse into cloned folder:
+    ```bash
+    $ cd Docker-Symfony-Env
+    ```
+- Create and run the containers typing in the docker terminal:
+    ```bash
+    $ docker-compose up -d
+    ```
+
+Now open your browser and go to: <http://192.168.99.100:8080/phpinfo.php> it should show you the PHP 7 info page.
+Ports are configured in `.env`
+
+- Apps & Sites: go to <http://192.168.99.100:8080/>
+- PHPMyAdmin: go to <http://192.168.99.100:8081/>
+
+## Customize
+
+If you dont need PHPMyAdmin or want to add/remove other containers see this [file](docs/customize.md).
 
 ## TODO
 

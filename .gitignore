@@ -1,3 +1,7 @@
+# Docker
+.env
+/data/db/*
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*

@@ -1,2 +1,61 @@
 # Docker-Symfony-Env
-Docker-compose file for dockerized Symfony environment.
+
+------------
+
+## PHP 7, Apache, MySQL docker environment
+
+Docker-compose file for dockerized Symfony development environment.
+
+## Docker containers with
+
+- Data Volume (code share)
+- DB-Data Volume (MySQL data persist)
+- PHP 7
+- Apache2
+- MySQL
+- PHPMyAdmin (for database administration, yu can easily remove it)
+
+Build on a docker-compose.yml file.
+
+Note: This environment configuration was made on Windows 10, on Linux the shared folders are not setted before because it works out of the box.
+The usual IP used for docker is (192.168.99.100), if differs please replace for your setup.
+
+## Requirements
+
+- Docker
+- VirtualBox (usually installed with docker)
+- GIT (just for clone this repo)
+
+## Installation/Use
+
+- Create a `.env` from the `.env.dist` file. Configure it according to your needs.
+
+    ```bash
+        cp .env.dist .env
+    ```
+
+- Go into any terminal and clone or fork the project.
+- Browse into cloned folder: 'cd Docker-Symfony-Env'
+- Type in the docker terminal: 'docker-compose build' to build the required images.
+- Type in the docker terminal: 'docker-compose up -d' to create and run the containers.
+
+Now open your browser and go to: <http://192.168.99.100/phpinfo.php> it should show you the PHP 7 info page.
+
+## TODO
+
+- Updates to Readme
+- Add guide to share folders on Windows.
+- Add diagram of the structure.
+- Some tests on Symfony development.
+- Add Symfony configurations.
+- Explanations of the dockerfiles.
+- Guide to modify the docker-compose.yml file.
+
+## Comments
+
+Any comment feel free to mail me: creyent [at] gmail [dot] com
+
+## Contributing
+
+Thanks for contributing!
+If you find errors/typos/anything/... please send me a Pull Request, mail me or open an issue.

@@ -5,6 +5,7 @@
 ## PHP 7, Apache, MySQL docker environment
 
 Docker-compose file for dockerized Symfony development environment.
+WIP, at the momment works for any PHP project, working on the Symfony project.
 
 ## Docker containers with
 

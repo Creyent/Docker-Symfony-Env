@@ -5,7 +5,10 @@ LABEL maintainer="Victor Cifuentes <creyent@gmail.com>"
 LABEL version="1.0"
 
 # Install updates and basic funcs
-RUN apt-get update && buildDeps="libpq-dev libzip-dev" && apt-get install -y $buildDeps git nano --no-install-recommends
+RUN apt-get update \
+    && buildDeps="libpq-dev libzip-dev" \
+    && apt-get install -y $buildDeps git nano --no-install-recommends \
+    && apt-get clean
 
 # Install PHP extensions, Type docker-php-ext-install to see available extensions
 RUN /usr/local/bin/docker-php-ext-install mysqli
@@ -14,11 +17,9 @@ RUN /usr/local/bin/docker-php-ext-install mysqli
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set timezone
-RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
-RUN echo "date.timezone=`cat /etc/timezone`" > /usr/local/etc/php/conf.d/timezone.ini
-RUN "date"
+RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+    && echo ${TIMEZONE} > /etc/timezone \
+    && echo "date.timezone=`cat /etc/timezone`" > /usr/local/etc/php/conf.d/timezone.ini
 
 # Config aliases for synfony commands
 RUN echo 'alias sf="php bin/console"' >> ~/.bashrc
-
-RUN apt-get clean

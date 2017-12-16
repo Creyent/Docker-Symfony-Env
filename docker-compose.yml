@@ -107,6 +107,29 @@ services:
     networks:
       - frontend
 
+  browsersync:
+    build:
+      context: ./sync
+      dockerfile: sync.dockerfile
+    image: ${CONTAINER_PREFIX}.browsersync
+    container_name: ${CONTAINER_PREFIX}.browsersync
+    depends_on:
+      - php
+    volumes_from:
+      - back-data
+    links:
+      - php
+    volumes:
+      - ${NODE_FOLDER}:/var/browser/node_modules
+    command: start --proxy "php:80" --files "*.php" "*/*.html" "*/*.js" "*/*.css" "*/*.twig" --reload-debounce "2000"
+    ports:
+      - ${BROWSERSYNC_PORT}:3000
+      - ${BROWSERSYNC_ADMIN_PORT}:3001
+    restart: always
+    networks:
+      - backend
+      - frontend
+
 networks:
   frontend:
   backend:

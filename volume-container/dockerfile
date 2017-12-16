@@ -1,0 +1,7 @@
+FROM scratch
+
+LABEL maintainer="Victor Cifuentes <creyent@gmail.com>"
+LABEL version="1.0"
+
+VOLUME /data
+ENTRYPOINT ["/data"]
